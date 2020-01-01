@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Sulphur+Point&display=swap');
+
+*{
+    font-family: 'Sulphur Point', sans-serif;
+    padding: 0;
+    margin: 0;
+    background: #FFA17F;
+    background: -webkit-linear-gradient(to right, #00223E, rgb(3, 1, 0));
+    background: linear-gradient(to right, rgb(14, 97, 165), rgb(210, 210, 233));
+
+}
+
+.box{
+    text-align: center;
+    margin-top: 12rem;
+    font-size: 1.5rem;
+}
