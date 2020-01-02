@@ -333,9 +333,11 @@ rating: item.escritorio
 /*
 Escriba su propio Array.prototype.myMap (), que debería comportarse exactamente como Array.prototype.map (). Puede usar un bucle for o el método forEach.
 */
+//____________CREANDO METODOS PROPIOS____________________________
 
 let nums182 = [10, 20, 30, 40, 50];
-let nums182X2 = nums182.map(num => num * 2);
+const ageSons = [1, 2, 4, 23, 27];
+const nameFamily = ['Pablo', 'Lucero', 'Thiago', 'Yara' , 'Andrea'];
 
 Array.prototype.myMap = function(callback) {
     let newArray = [];
@@ -348,9 +350,6 @@ Array.prototype.myMap = function(callback) {
     return newArray;
 }
 
-//____________CREANDO METODOS PROPIOS____________________________
-const ageSons = [1, 2, 4, 23, 27];
-
 Array.prototype.myMapFunction = function(callback) {
     let localArray = [];
 
@@ -359,9 +358,7 @@ Array.prototype.myMapFunction = function(callback) {
     }
     return localArray;
 }
-
-console.log(ageSons.myMapFunction(item => item));
-
+// console.log(ageSons.myMapFunction(item => item));
 
 Array.prototype.myFilter = function(callback) {
     let newArray = [];
@@ -375,6 +372,19 @@ Array.prototype.myFilter = function(callback) {
     return newArray
 }
 
+
+const cutArray = (arr, begin, end) => {
+    return arr.slice(begin, end);
+}
+
+console.log(cutArray(nameFamily, 0, 5));
+
+//CONCATENACION DE MATRIZES______.concat()_______________________
+const concatArray = (arr1, arr2) => {
+    return arr1.concat(arr2);
+}
+
+console.log(concatArray(ageSons, nameFamily));
 // console.log(ageSons.myFilter(item => item  % 2 === 1));
 // console.log(nums182.myMap(function(item) {
 //     return item * 2;
