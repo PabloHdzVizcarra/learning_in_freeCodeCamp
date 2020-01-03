@@ -274,8 +274,7 @@ function removeArticulo(lista, item) {
 
 //________________Excersise 7_________________________________
 
-var distroUbuntu = [
-    {
+var distroUbuntu = [{
         name: 'Ubuntu',
         derivada: 'Debian',
         ultimaVersion: '19.10',
@@ -321,8 +320,9 @@ let nombreHijos = [
 
 // console.log(nombreHijos.map(name => `El nombre del miembro de la familia es ${name}`));
 
-let nameDeskpot = distroUbuntu.map(item => ({title: item.name,
-rating: item.escritorio
+let nameDeskpot = distroUbuntu.map(item => ({
+    title: item.name,
+    rating: item.escritorio
 }));
 
 // console.log(nameDeskpot);
@@ -337,20 +337,20 @@ Escriba su propio Array.prototype.myMap (), que debería comportarse exactamente
 
 let nums182 = [10, 20, 30, 40, 50];
 const ageSons = [1, 2, 4, 23, 27];
-const nameFamily = ['Pablo', 'Lucero', 'Thiago', 'Yara' , 'Andrea'];
+const nameFamily = ['Pablo', 'Lucero', 'Thiago', 'Yara', 'Andrea'];
 
-Array.prototype.myMap = function(callback) {
+Array.prototype.myMap = function (callback) {
     let newArray = [];
 
     for (let i = 0; i < this.length; i++) {
         newArray.push(callback(this[i]));
-        
+
     }
 
     return newArray;
 }
 
-Array.prototype.myMapFunction = function(callback) {
+Array.prototype.myMapFunction = function (callback) {
     let localArray = [];
 
     for (let i = 0; i < this.length; i++) {
@@ -360,7 +360,7 @@ Array.prototype.myMapFunction = function(callback) {
 }
 // console.log(ageSons.myMapFunction(item => item));
 
-Array.prototype.myFilter = function(callback) {
+Array.prototype.myFilter = function (callback) {
     let newArray = [];
 
     for (let i = 0; i < this.length; i++) {
@@ -395,8 +395,7 @@ console.log(concatArray(ageSons, nameFamily));
 // }))
 
 
-const DistroDebian = [
-    {
+const DistroDebian = [{
         name: 'Debian',
         derivada: 'Debian',
         deskpot: 'None',
@@ -406,7 +405,7 @@ const DistroDebian = [
         name: 'MX Linux',
         derivada: 'Debian',
         deskpot: 'XFCE',
-        version: 19 
+        version: 19
     },
     {
         name: 'Kali Linux',

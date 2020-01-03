@@ -135,4 +135,95 @@ function getRating(watchList){
     return averageRating;
 }
 
-console.log(getRating(watchList));
+// console.log(getRating(watchList));
+
+//____________LEARNING REDUCE()______________________________________
+
+let weekMoney = [20, 50, 30, 10, 89, 46, 13];
+let sumMoney = weekMoney.reduce((acumulador, valor) => {
+  return acumulador + valor;
+}, 100)
+
+// console.log(weekMoney.filter((valor) => valor >= 50)
+//                     .reduce((acc, valor) => acc + valor));
+// console.log(sumMoney);
+
+let sumMoneyES6 = weekMoney.reduce((accu, value) => accu + value, 200);
+// console.log(sumMoneyES6);
+
+let chinaPoblation = [
+  {
+    country: 'China',
+    pop: 1409517397
+  },
+  {
+    country: 'India',
+    pop: 1339180127
+  },
+  {
+    country: 'USA',
+    pop: 324459463
+  },
+  {
+    country: 'Indonesia',
+    pop: 263991379
+  }
+];
+
+// console.log(chinaPoblation.map(item => item.pop));
+
+// console.log(chinaPoblation.reduce((acc, val) => {
+//   return val.country == 'China' ? acc : acc + val.pop;
+// }, 0))
+
+// console.log(chinaPoblation.reduce((acumulador, valor) => {
+//   return acumulador + valor.pop;
+// }, 0));
+
+// console.log(chinaPoblation.reduce((accu, value) => accu + value.pop, 0));
+
+//_______EXCERSISE ______________________________________________________
+/*
+Hemos definido una función llamada squareList. Debe completar el código para la función squareList usando cualquier combinación de map (), filter () y reduce () para que devuelva una nueva matriz que contenga solo el cuadrado de solo los enteros positivos (los números decimales no son enteros) cuando se le pasa una serie de números reales. Un ejemplo de una matriz que contiene solo números reales es [-3, 4.8, 5, 3, -3.2].
+
+Nota: Su función no debe usar ningún tipo de bucles for o while o la función forEach ().
+*/
+
+const squareList = (arr) => {
+  // only change code below this line
+  
+  return arr
+          .filter((item) => Number.isInteger(item) && item > 0)
+          .map((item) => item * item);
+  // only change code above this line
+};
+
+// test your code
+const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+console.log(squaredIntegers);
+
+//________EXCERSISE 17___________________________________________
+
+let arrayNumbers = [10, 50, 30, 80, 100, 99, 89];
+let arrayLetters = ['t', 'y', 'a', 'l', 'z', 'p'];
+function ascendingOrder(arr) {
+  return arr.sort(function(a, b) {
+    return a - b;
+  });
+};
+
+console.log(ascendingOrder(arrayNumbers));
+
+function reverseLetters(arr) {
+  return arr.sort(function(a, b) {
+    return a === b ? 0:a < b ? 1:-1;
+  });
+};
+debugger
+function orderLetters(arr) {
+  return arr.sort(function(a, b) {
+    return a === b ? 0:a < b ? -1:1;
+  })
+}
+
+console.log(orderLetters(arrayLetters));
