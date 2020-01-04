@@ -1,138 +1,137 @@
-'use strict'
+"use strict"
 /*
 La variable watchList contiene una variedad de objetos con información sobre varias películas. Use reducir para encontrar la calificación promedio de IMDB de las películas dirigidas por Christopher Nolan. Recuerde de desafíos anteriores cómo filtrar datos y mapearlos para obtener lo que necesita. Es posible que deba crear otras variables y devolver la calificación promedio de la función getRating. Tenga en cuenta que los valores de clasificación se guardan como cadenas en el objeto y deben convertirse en números antes de usarse en cualquier operación matemática.
 */
 
-var watchList = [
-    {
-      "Title": "Inception",
-      "Year": "2010",
-      "Rated": "PG-13",
-      "Released": "16 Jul 2010",
-      "Runtime": "148 min",
-      "Genre": "Action, Adventure, Crime",
-      "Director": "Christopher Nolan",
-      "Writer": "Christopher Nolan",
-      "Actors": "Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page, Tom Hardy",
-      "Plot": "A thief, who steals corporate secrets through use of dream-sharing technology, is given the inverse task of planting an idea into the mind of a CEO.",
-      "Language": "English, Japanese, French",
-      "Country": "USA, UK",
-      "Awards": "Won 4 Oscars. Another 143 wins & 198 nominations.",
-      "Poster": "http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
-      "Metascore": "74",
-      "imdbRating": "8.8",
-      "imdbVotes": "1,446,708",
-      "imdbID": "tt1375666",
-      "Type": "movie",
-      "Response": "True"
-    },
-    {
-      "Title": "Interstellar",
-      "Year": "2014",
-      "Rated": "PG-13",
-      "Released": "07 Nov 2014",
-      "Runtime": "169 min",
-      "Genre": "Adventure, Drama, Sci-Fi",
-      "Director": "Christopher Nolan",
-      "Writer": "Jonathan Nolan, Christopher Nolan",
-      "Actors": "Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow",
-      "Plot": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
-      "Language": "English",
-      "Country": "USA, UK",
-      "Awards": "Won 1 Oscar. Another 39 wins & 132 nominations.",
-      "Poster": "http://ia.media-imdb.com/images/M/MV5BMjIxNTU4MzY4MF5BMl5BanBnXkFtZTgwMzM4ODI3MjE@._V1_SX300.jpg",
-      "Metascore": "74",
-      "imdbRating": "8.6",
-      "imdbVotes": "910,366",
-      "imdbID": "tt0816692",
-      "Type": "movie",
-      "Response": "True"
-    },
-    {
-      "Title": "The Dark Knight",
-      "Year": "2008",
-      "Rated": "PG-13",
-      "Released": "18 Jul 2008",
-      "Runtime": "152 min",
-      "Genre": "Action, Adventure, Crime",
-      "Director": "Christopher Nolan",
-      "Writer": "Jonathan Nolan (screenplay), Christopher Nolan (screenplay), Christopher Nolan (story), David S. Goyer (story), Bob Kane (characters)",
-      "Actors": "Christian Bale, Heath Ledger, Aaron Eckhart, Michael Caine",
-      "Plot": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice.",
-      "Language": "English, Mandarin",
-      "Country": "USA, UK",
-      "Awards": "Won 2 Oscars. Another 146 wins & 142 nominations.",
-      "Poster": "http://ia.media-imdb.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
-      "Metascore": "82",
-      "imdbRating": "9.0",
-      "imdbVotes": "1,652,832",
-      "imdbID": "tt0468569",
-      "Type": "movie",
-      "Response": "True"
-    },
-    {
-      "Title": "Batman Begins",
-      "Year": "2005",
-      "Rated": "PG-13",
-      "Released": "15 Jun 2005",
-      "Runtime": "140 min",
-      "Genre": "Action, Adventure",
-      "Director": "Christopher Nolan",
-      "Writer": "Bob Kane (characters), David S. Goyer (story), Christopher Nolan (screenplay), David S. Goyer (screenplay)",
-      "Actors": "Christian Bale, Michael Caine, Liam Neeson, Katie Holmes",
-      "Plot": "After training with his mentor, Batman begins his fight to free crime-ridden Gotham City from the corruption that Scarecrow and the League of Shadows have cast upon it.",
-      "Language": "English, Urdu, Mandarin",
-      "Country": "USA, UK",
-      "Awards": "Nominated for 1 Oscar. Another 15 wins & 66 nominations.",
-      "Poster": "http://ia.media-imdb.com/images/M/MV5BNTM3OTc0MzM2OV5BMl5BanBnXkFtZTYwNzUwMTI3._V1_SX300.jpg",
-      "Metascore": "70",
-      "imdbRating": "8.3",
-      "imdbVotes": "972,584",
-      "imdbID": "tt0372784",
-      "Type": "movie",
-      "Response": "True"
-    },
-    {
-      "Title": "Avatar",
-      "Year": "2009",
-      "Rated": "PG-13",
-      "Released": "18 Dec 2009",
-      "Runtime": "162 min",
-      "Genre": "Action, Adventure, Fantasy",
-      "Director": "James Cameron",
-      "Writer": "James Cameron",
-      "Actors": "Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang",
-      "Plot": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
-      "Language": "English, Spanish",
-      "Country": "USA, UK",
-      "Awards": "Won 3 Oscars. Another 80 wins & 121 nominations.",
-      "Poster": "http://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
-      "Metascore": "83",
-      "imdbRating": "7.9",
-      "imdbVotes": "876,575",
-      "imdbID": "tt0499549",
-      "Type": "movie",
-      "Response": "True"
-    }
+var watchList = [{
+    "Title": "Inception",
+    "Year": "2010",
+    "Rated": "PG-13",
+    "Released": "16 Jul 2010",
+    "Runtime": "148 min",
+    "Genre": "Action, Adventure, Crime",
+    "Director": "Christopher Nolan",
+    "Writer": "Christopher Nolan",
+    "Actors": "Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page, Tom Hardy",
+    "Plot": "A thief, who steals corporate secrets through use of dream-sharing technology, is given the inverse task of planting an idea into the mind of a CEO.",
+    "Language": "English, Japanese, French",
+    "Country": "USA, UK",
+    "Awards": "Won 4 Oscars. Another 143 wins & 198 nominations.",
+    "Poster": "http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+    "Metascore": "74",
+    "imdbRating": "8.8",
+    "imdbVotes": "1,446,708",
+    "imdbID": "tt1375666",
+    "Type": "movie",
+    "Response": "True"
+  },
+  {
+    "Title": "Interstellar",
+    "Year": "2014",
+    "Rated": "PG-13",
+    "Released": "07 Nov 2014",
+    "Runtime": "169 min",
+    "Genre": "Adventure, Drama, Sci-Fi",
+    "Director": "Christopher Nolan",
+    "Writer": "Jonathan Nolan, Christopher Nolan",
+    "Actors": "Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow",
+    "Plot": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    "Language": "English",
+    "Country": "USA, UK",
+    "Awards": "Won 1 Oscar. Another 39 wins & 132 nominations.",
+    "Poster": "http://ia.media-imdb.com/images/M/MV5BMjIxNTU4MzY4MF5BMl5BanBnXkFtZTgwMzM4ODI3MjE@._V1_SX300.jpg",
+    "Metascore": "74",
+    "imdbRating": "8.6",
+    "imdbVotes": "910,366",
+    "imdbID": "tt0816692",
+    "Type": "movie",
+    "Response": "True"
+  },
+  {
+    "Title": "The Dark Knight",
+    "Year": "2008",
+    "Rated": "PG-13",
+    "Released": "18 Jul 2008",
+    "Runtime": "152 min",
+    "Genre": "Action, Adventure, Crime",
+    "Director": "Christopher Nolan",
+    "Writer": "Jonathan Nolan (screenplay), Christopher Nolan (screenplay), Christopher Nolan (story), David S. Goyer (story), Bob Kane (characters)",
+    "Actors": "Christian Bale, Heath Ledger, Aaron Eckhart, Michael Caine",
+    "Plot": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice.",
+    "Language": "English, Mandarin",
+    "Country": "USA, UK",
+    "Awards": "Won 2 Oscars. Another 146 wins & 142 nominations.",
+    "Poster": "http://ia.media-imdb.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
+    "Metascore": "82",
+    "imdbRating": "9.0",
+    "imdbVotes": "1,652,832",
+    "imdbID": "tt0468569",
+    "Type": "movie",
+    "Response": "True"
+  },
+  {
+    "Title": "Batman Begins",
+    "Year": "2005",
+    "Rated": "PG-13",
+    "Released": "15 Jun 2005",
+    "Runtime": "140 min",
+    "Genre": "Action, Adventure",
+    "Director": "Christopher Nolan",
+    "Writer": "Bob Kane (characters), David S. Goyer (story), Christopher Nolan (screenplay), David S. Goyer (screenplay)",
+    "Actors": "Christian Bale, Michael Caine, Liam Neeson, Katie Holmes",
+    "Plot": "After training with his mentor, Batman begins his fight to free crime-ridden Gotham City from the corruption that Scarecrow and the League of Shadows have cast upon it.",
+    "Language": "English, Urdu, Mandarin",
+    "Country": "USA, UK",
+    "Awards": "Nominated for 1 Oscar. Another 15 wins & 66 nominations.",
+    "Poster": "http://ia.media-imdb.com/images/M/MV5BNTM3OTc0MzM2OV5BMl5BanBnXkFtZTYwNzUwMTI3._V1_SX300.jpg",
+    "Metascore": "70",
+    "imdbRating": "8.3",
+    "imdbVotes": "972,584",
+    "imdbID": "tt0372784",
+    "Type": "movie",
+    "Response": "True"
+  },
+  {
+    "Title": "Avatar",
+    "Year": "2009",
+    "Rated": "PG-13",
+    "Released": "18 Dec 2009",
+    "Runtime": "162 min",
+    "Genre": "Action, Adventure, Fantasy",
+    "Director": "James Cameron",
+    "Writer": "James Cameron",
+    "Actors": "Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang",
+    "Plot": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+    "Language": "English, Spanish",
+    "Country": "USA, UK",
+    "Awards": "Won 3 Oscars. Another 80 wins & 121 nominations.",
+    "Poster": "http://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
+    "Metascore": "83",
+    "imdbRating": "7.9",
+    "imdbVotes": "876,575",
+    "imdbID": "tt0499549",
+    "Type": "movie",
+    "Response": "True"
+  }
 ];
-  
 
-function getRating(watchList){
-    // Add your code below this line
-    var averageRating;
-    
-    let newArray = watchList
-                .filter(actor => actor.Director === 'Christopher Nolan')
-                .reduce((sum, rating) => sum + parseFloat(rating.imdbRating),0);
-    let lengthArray = watchList
-                .filter(actor => actor.Director === 'Christopher Nolan')
-                .map(item => item.imdbRating)
-                .length;
 
-    averageRating = newArray / lengthArray;
+function getRating(watchList) {
+  // Add your code below this line
+  var averageRating;
 
-    // Add your code above this line
-    return averageRating;
+  let newArray = watchList
+    .filter(actor => actor.Director === 'Christopher Nolan')
+    .reduce((sum, rating) => sum + parseFloat(rating.imdbRating), 0);
+  let lengthArray = watchList
+    .filter(actor => actor.Director === 'Christopher Nolan')
+    .map(item => item.imdbRating)
+    .length;
+
+  averageRating = newArray / lengthArray;
+
+  // Add your code above this line
+  return averageRating;
 }
 
 // console.log(getRating(watchList));
@@ -151,8 +150,7 @@ let sumMoney = weekMoney.reduce((acumulador, valor) => {
 let sumMoneyES6 = weekMoney.reduce((accu, value) => accu + value, 200);
 // console.log(sumMoneyES6);
 
-let chinaPoblation = [
-  {
+let chinaPoblation = [{
     country: 'China',
     pop: 1409517397
   },
@@ -191,39 +189,118 @@ Nota: Su función no debe usar ningún tipo de bucles for o while o la función 
 
 const squareList = (arr) => {
   // only change code below this line
-  
+
   return arr
-          .filter((item) => Number.isInteger(item) && item > 0)
-          .map((item) => item * item);
+    .filter((item) => Number.isInteger(item) && item > 0)
+    .map((item) => item * item);
   // only change code above this line
 };
 
 // test your code
 const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
-console.log(squaredIntegers);
+// console.log(squaredIntegers);
 
 //________EXCERSISE 17___________________________________________
 
 let arrayNumbers = [10, 50, 30, 80, 100, 99, 89];
 let arrayLetters = ['t', 'y', 'a', 'l', 'z', 'p'];
+
 function ascendingOrder(arr) {
-  return arr.sort(function(a, b) {
+  return arr.sort(function (a, b) {
     return a - b;
   });
 };
 
-console.log(ascendingOrder(arrayNumbers));
+// console.log(ascendingOrder(arrayNumbers));
 
 function reverseLetters(arr) {
-  return arr.sort(function(a, b) {
-    return a === b ? 0:a < b ? 1:-1;
+  return arr.sort(function (a, b) {
+    return a === b ? 0 : a < b ? 1 : -1;
   });
 };
-debugger
+
 function orderLetters(arr) {
-  return arr.sort(function(a, b) {
-    return a === b ? 0:a < b ? -1:1;
+  return arr.sort(function (a, b) {
+    return a === b ? 0 : a < b ? -1 : 1;
   })
 }
 
-console.log(orderLetters(arrayLetters));
+// console.log(orderLetters(arrayLetters));
+
+//___Excersise 20_____________________________________________
+/*
+Complete la función urlSlug para que convierta un título de cadena y devuelva la versión con guión para la URL. Puede usar cualquiera de los métodos cubiertos en esta sección, y no usar reemplazar. Aquí están los requisitos:
+
+--La entrada es una cadena con espacios y palabras en mayúsculas
+--La salida es una cadena con los espacios entre palabras reemplazados por un guión (-)
+--La salida debe ser todas letras minúsculas
+--La salida no debe tener espacios
+
+*/
+
+
+var globalTitle = "   Winter Is Coming";
+
+// Add your code below this line
+function urlSlug(title) {
+  let newString = title.toLowerCase();
+  let secondString = newString.split(/\W/)
+    .filter((obj) => obj != "");
+  return secondString.join('-');
+}
+// Add your code above this line
+
+var winterComing = urlSlug(globalTitle);
+console.log(winterComing); // Should be "winter-is-coming"
+
+let days = ['Lunes', 'Martes '];
+console.log(days.filter((obj) => obj == 'Lunes'));
+
+//___Excersise 21______________________________________________
+/*
+Use the every method inside the checkPositive function to check if every element in arr is positive. The function should return a Boolean value.
+*/
+
+function checkPositive(arr) {
+  return arr.every((value) => value > 0);
+}
+console.log(checkPositive([1, 2, 3, -4, 5]));
+
+
+let dayLunes = ['Lunes', 'lunes', 'LUNES'];
+const checkTrue = (array) => {
+  let localArray = array.toString();
+  localArray = localArray.toLowerCase();
+  localArray = localArray.split(',');
+  console.log(localArray);
+  return localArray.every((valor) => valor === 'lunes');
+}
+console.log(checkTrue(dayLunes));
+
+
+//___Excersise 22_______________________________________________
+/*Use the some method inside the checkPositive function to check if any element in arr is positive. The function should return a Boolean value.
+ */
+let moneyFriday = [68, 50, 41];
+
+function moneyMore(values) {
+  return values.some((value) => value > 50);
+}
+console.log(moneyMore(moneyFriday));
+
+//___Excersise 23____________________________________________________
+/*
+Rellene el cuerpo de la función de agregar para que use curry para agregar los parámetros x, y y z.
+*/
+
+function addCurry(x) {
+  return function (y) {
+    return function (z) {
+      return x + y + z;
+    }
+  }
+}
+console.log(addCurry(10)(20)(40));
+
+const addCurryTwo = (x) => (y) => (z) => x + y + z; 
+console.log(addCurryTwo(20)(50)(30));

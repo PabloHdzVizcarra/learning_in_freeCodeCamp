@@ -1,4 +1,4 @@
-'use script'
+"use strict"
 
 const prepareCoffe = () => 'coffeMilk';
 const getCoffe = (numCoffes) => {
